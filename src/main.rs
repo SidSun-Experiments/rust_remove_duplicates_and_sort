@@ -11,12 +11,9 @@ impl Array {
         let mut temp: Vec<i32> = Vec::new();
         for i in self.a.iter() {
             let value = encountered_elements.get(&i);
-            match value {
-                None => {
-                    encountered_elements.insert(*i, true);
-                    temp.append(&mut [*i].to_vec());
-                }
-                _ => {}
+            if value == None {
+                encountered_elements.insert(*i, true);
+                temp.append(&mut [*i].to_vec());
             }
         }
         self.a = temp;
